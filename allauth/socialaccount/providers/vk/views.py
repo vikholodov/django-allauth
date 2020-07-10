@@ -1,5 +1,5 @@
 import requests
-
+from allauth.socialaccount import app_settings
 from allauth.socialaccount.providers.oauth2.views import (
     OAuth2Adapter,
     OAuth2CallbackView,
@@ -42,7 +42,7 @@ class VKOAuth2Adapter(OAuth2Adapter):
     def complete_login(self, request, app, token, **kwargs):
         uid = kwargs['response'].get('user_id')
         params = {
-            'v': '5.95',
+            'v': app_settings.VK_API_VERSION,
             'access_token': token.token,
             'fields': ','.join(USER_FIELDS),
         }
