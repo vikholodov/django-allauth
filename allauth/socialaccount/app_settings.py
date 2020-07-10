@@ -70,6 +70,10 @@ class AppSettings(object):
     @property
     def UID_MAX_LENGTH(self):
         return 191
+    
+    @property
+    def VK_API_VERSION(self):
+        return self._setting('VK_API_VERSION', '5.120')
 
 
 # Ugly? Guido recommends this himself ...
